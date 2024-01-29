@@ -13,7 +13,7 @@ const HomeGuest = () => {
     e.preventDefault();
 
     try {
-      const response = await Axios.post('http://localhost:8080/register', {username, email, password});
+      const response = await Axios.post('/register', {username, email, password});
       console.log('User was created');
       console.log(response);
     } catch(e) {  
@@ -22,7 +22,7 @@ const HomeGuest = () => {
   }
 
     return(
-        <Page title='Home' wide={true}>
+      <Page title='Home' wide={true}>
         <div className="row align-items-center">
           <div className="col-lg-7 py-3 py-md-5">
             <h1 className="display-3">Remember Writing?</h1>
