@@ -1,18 +1,12 @@
-import React, {useState, useEffect} from "react";
+import React, {useState, useEffect, useContext} from "react";
 import {Link} from 'react-router-dom';
 import HeaderLoggedOut from "./HeaderLoggedOut";
 import HeaderLoggedIn from "./HeaderLoggedIn";
+import StateContext from "../StateContext";
 
-const Header = ({loggedIn=false, setLoggedIn}) => {
+const Header = (props) => {
  
-  useEffect ( () => {
-    if (!loggedIn) {
-      localStorage.removeItem('complexAppToken');
-      localStorage.removeItem('complexAppUsername');
-      localStorage.removeItem('complexAppAvatar');
-    }
-  }, [loggedIn])
-
+  const appState = useContext(StateContext);
 
     return(
         <header className="header-bar bg-primary mb-3">
@@ -22,7 +16,7 @@ const Header = ({loggedIn=false, setLoggedIn}) => {
               ComplexApp
             </Link>
           </h4>
-          {loggedIn ? < HeaderLoggedIn setLoggedIn={setLoggedIn} /> : <HeaderLoggedOut setLoggedIn={setLoggedIn}/>}
+          {appState.loggedIn ? < HeaderLoggedIn /> : <HeaderLoggedOut />}
         </div>
       </header>
     )
