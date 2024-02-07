@@ -1,27 +1,40 @@
-import React, { useEffect } from "react"
+import React, { useEffect, useContext } from "react"
 import { Link } from "react-router-dom"
 
-const HeaderLoggedIn = ( {setLoggedIn})=> {
+import DispatchContext from "../DispatchContext"
+import StateContext from "../StateContext"
+
+const HeaderLoggedIn = ()=> {
+
+  const appDispatch = useContext(DispatchContext);
+  const appState = useContext(StateContext);
+
+  const handleLogout = () => {
+    appDispatch({type: 'logOut'});
+    // localStorage.removeItem('complexAppToken');
+    // localStorage.removeItem('complexAppUsername');
+    // localStorage.removeItem('complexAppAvatar');
+  };
 
   return (
     <div className="flex-row my-3 my-md-0">
-    <a href="#" className="text-white mr-2 header-search-icon">
-      <i className="fas fa-search"></i>
-    </a>
-    <span className="mr-2 header-chat-icon text-white">
-      <i className="fas fa-comment"></i>
-      <span className="chat-count-badge text-white"> </span>
-    </span>
-    <a href="#" className="mr-2">
-      <img className="small-header-avatar" src={localStorage.getItem('complexAppAvatar')} />
-    </a>
-    <Link className="btn btn-sm btn-success mr-2" to="/create-post">
-      Create Post
-    </Link>
-    <button onClick={() => setLoggedIn(false)} className="btn btn-sm btn-secondary">
-      Sign Out
-    </button>
-  </div>
+      <a href="#" className="text-white mr-2 header-search-icon">
+        <i className="fas fa-search"></i>
+      </a>
+      <span className="mr-2 header-chat-icon text-white">
+        <i className="fas fa-comment"></i>
+        <span className="chat-count-badge text-white"> </span>
+      </span>
+      <a href="#" className="mr-2">
+        <img className="small-header-avatar" src={appState.user.avatar} />
+      </a>
+      <Link className="btn btn-sm btn-success mr-2" to="/create-post">
+        Create Post
+      </Link>
+      <button onClick={handleLogout} className="btn btn-sm btn-secondary">
+        Sign Out
+      </button>
+    </div>
   )
 }
 
