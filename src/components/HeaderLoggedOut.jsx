@@ -17,9 +17,6 @@ const HeaderLoggedOut = ()=> {
             if( response.data) {
                 console.log(response.data);
                 appDispatch({type: 'logIn', data: response.data});
-                // localStorage.setItem('complexAppToken', response.data.token);
-                // localStorage.setItem('complexAppUsername', response.data.username);
-                // localStorage.setItem('complexAppAvatar', response.data.avatar);
 
             } else {
                 console.log("Incorrect Username or Password");

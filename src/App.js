@@ -16,6 +16,7 @@ import Home from './components/Home';
 import CreatePost from './components/CreatePost';
 import ViewPost from './components/ViewPost';
 import FlashMessages from './components/FlashMessages';
+import Profile from './components/Profile';
 
 Axios.defaults.baseURL = 'http://localhost:8080';
 
@@ -98,6 +99,7 @@ function App() {
           <Route path='/create-post' element={<CreatePost />}/>
           <Route path='/post/:id' element={<ViewPost />}/>
           <Route path='/' element={ state.loggedIn ? <Home/>: <HomeGuest/>}/>
+          <Route path='/profile/:username/*' element={<Profile />}/>
           <Route path='/about-us' element={<About />}/>
           <Route path='/terms' element={<Terms />}/>
           </Routes>
