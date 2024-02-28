@@ -1,19 +1,14 @@
-import React, { useEffect, useState } from "react"
+import React, { useEffect, useState } from "react";
 import Container from "./Container";
 
-const Page = (props)=> {
+const Page = (props) => {
+  useEffect(() => {
+    // set title
+    document.title = `${props.title} | ComplexApp`;
+    window.scrollTo(0, 0);
+  }, [props.title]);
 
-    useEffect(() => {
-        // set title
-        document.title = `${props.title} | ComplexApp`;
-        window.scrollTo(0,0);
-      },[]);
+  return <Container wide={props.wide}>{props.children}</Container>;
+};
 
-  return (
-    <Container wide={props.wide}>
-      {props.children}
-    </Container>
-  )
-}
-
-export default Page
+export default Page;
