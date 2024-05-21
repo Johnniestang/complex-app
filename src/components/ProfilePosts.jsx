@@ -49,10 +49,7 @@ const ProfilePosts = () => {
           to={`/post/${post._id}`}
           className="list-group-item list-group-item-action"
         >
-          <img
-            className="avatar-tiny"
-            src="https://gravatar.com/avatar/b9408a09298632b5151200f3449434ef?s=128"
-          />{" "}
+          <img className="avatar-tiny" src={post.author.avatar} />{" "}
           <strong>{post.title}</strong>{" "}
           <span className="text-muted small">{`on ${dateFormatted} `}</span>
         </Link>

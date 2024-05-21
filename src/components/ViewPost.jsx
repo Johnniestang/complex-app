@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useState } from "react";
 import { useParams, Link } from "react-router-dom";
 import Axios from "axios";
 import dispatchContext from "../DispatchContext";
+import { RingLoader } from "react-spinners";
 
 import Page from "./Page";
 
@@ -32,7 +33,12 @@ const ViewPost = () => {
   }, []);
 
   if (isLoading) {
-    return <Page title="..."> Loading ...</Page>;
+    return (
+      <Page title="...">
+        {" "}
+        <RingLoader />
+      </Page>
+    );
   }
 
   const date = new Date(post.createdDate);
